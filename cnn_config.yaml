@@ -1,0 +1,67 @@
+<<<<<<< HEAD
+model:
+  conv:
+    n_layers: 5
+    n_channels: 4
+    activation: "relu"
+
+dataset:
+  dir: "data/urban"
+
+train:
+  epochs: 1000
+  version: 0
+  gpus: 1
+  num_workers: 2
+  batch_size: 16
+
+  optim:
+    type: "adam"
+    betas: [0.5, 0.9]
+    weight_decay: 0.000001
+    lr: 0.0001
+
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  save_top_k: 3
+  check_val_freq: 1
+
+runtype: "train"
+
+hydra:
+  run:
+    dir: outputs/${runtype}/${now:%Y-%m-%d_%H-%M-%S}
+=======
+model:
+  conv:
+    n_layers: 5
+    n_channels : 4
+    activation : "relu"
+
+dataset:
+  dir: "data/urban"
+
+train:
+  epochs: 1000
+  version: 0
+  gpus: 1
+  num_workers: 0
+  batch_size: 2
+
+  optim:
+    type: "adam"
+    betas: [0.5, 0.9]
+    weight_decay: 0.000001
+    lr: 0.0001
+  
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  save_top_k: 3
+  check_val_freq: 5
+
+runtype: "debug"
+
+hydra:
+  run:
+    dir: outputs/${runtype}/${now:%Y-%m-%d_%H-%M-%S}
+>>>>>>> 069632990ad6e4e634d4d589f374c26a6d365e72

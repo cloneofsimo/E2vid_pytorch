@@ -1,0 +1,35 @@
+model:
+  conv:
+    n_layers: 5
+    n_channels: 4
+    activation: "relu"
+
+dataset:
+  dir: "data/urban"
+
+train:
+  epochs: 1000
+  version: 0
+  gpus: 1
+  num_workers: 2
+  batch_size: 16
+
+  optim:
+    type: "adam"
+    betas: [0.5, 0.9]
+    weight_decay: 0.000001
+    lr: 0.0001
+
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  save_top_k: 3
+  check_val_freq: 1
+
+inference:
+  checkpoint_path: "outputs/train/2021-03-01_10-14-28/checkpoints/epoch=7-step=115.ckpt"
+
+runtype: "inference"
+
+hydra:
+  run:
+    dir: outputs/${runtype}/${now:%Y-%m-%d_%H-%M-%S}
